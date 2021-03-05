@@ -7,9 +7,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppLogin from '../components/AppLogin';
 import FontSettings from '../components/LeftBarSettings/FontSettings';
 
+import { StyleSheet, Dimensions, TouchableOpacity, View } from 'react-native';
+
 const Drawer = createDrawerNavigator();
 
 export default function LeftSideDrawerNavigator() {
+
+  
 
   return (
     <NavigationContainer independent={true}>
@@ -25,8 +29,11 @@ export default function LeftSideDrawerNavigator() {
 }
 
 function ProgramComponents() {
+  let screenWidth = Dimensions.get("window").width;
     return(
+      <View style={styles.body}>
         <ProgramList />
+      </View>
     );
 }
 
@@ -41,3 +48,16 @@ function FontComponents(){
         <FontSettings />
     )
 }
+
+const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    flexDirection: 'column',
+    alignContent: 'center',
+    width: '80%',
+  },
+  wrapcontainer:{
+
+  }
+
+});  
