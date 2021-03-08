@@ -32,7 +32,6 @@ function ProgramComponents() {
   let screenWidth = Dimensions.get("window").width;
     return(
       <View style={styles.body}>
-        <ProgramList />
       </View>
     );
 }
@@ -55,6 +54,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignContent: 'center',
     width: '80%',
+    height: '100%'
   },
   wrapcontainer:{
 
