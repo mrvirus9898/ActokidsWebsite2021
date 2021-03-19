@@ -30,7 +30,6 @@ export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <View style={styles.body}>
       <BottomTab.Navigator
         initialRouteName="Programs"
         tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
@@ -56,7 +55,6 @@ export default function BottomTabNavigator() {
           }}
         />
       </BottomTab.Navigator>
-    </View>
   );
 }
 
@@ -76,7 +74,7 @@ function ProgramListNavigator() {
     <ProgramListStack.Navigator>
       <ProgramListStack.Screen
         name="ProgramListScreen"
-        component={ProgramList}
+        component={WrapProgramList}
         options={{ 
           headerTitle: 'Program List', 
           headerRight: () => (<FilterButton />)}}

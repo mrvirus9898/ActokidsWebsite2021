@@ -20,7 +20,7 @@ export default function ProgramList({navigation}) {
   const colorScheme = useColorScheme();
 
   const [programs, setPrograms] = useState<Array<Array<any>>>([]);
-  console.log("Program Listr " + navigation);
+  //console.log("Program Listr " + navigation);
   useEffect(() => {
     IncomingFilter.IncomingFilterActivties = []
     IncomingFilter.IncomingFilterTaxonomy = []
@@ -34,17 +34,9 @@ export default function ProgramList({navigation}) {
         IncomingFilter.IncomingFilterTaxonomy = result.Taxonomy;
     })
     }, [])
-  //console.log(Object.keys(programs[0]));
-  //console.log(programs[0].Program_Name);
   return(
       <View>
           <ShowPrograms programs={programs} navigation={navigation}/>
       </View>
   );
 }
-
-
-function ProgramComponents() {
-
-}
-
