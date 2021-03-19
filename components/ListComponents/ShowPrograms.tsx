@@ -39,7 +39,7 @@ export default function ShowPrograms(params: Array<Array<any>>){
           console.log("Still Loading")
           return(null)
         }else{
-          //console.log("Showing Programs: " + Object.keys(params))
+          //console.log("Showing Programs: " + Object.keys(params.navigation))
           
           let filteredData = applyFilter(FilterCriteria.Criteria)
           return( 

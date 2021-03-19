@@ -18,41 +18,33 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function ProgramList({navigation}) {
   const colorScheme = useColorScheme();
-  return ( ProgramComponents(navigation));
+
+  const [programs, setPrograms] = useState<Array<Array<any>>>([]);
+  console.log("Program Listr " + navigation);
+  useEffect(() => {
+    IncomingFilter.IncomingFilterActivties = []
+    IncomingFilter.IncomingFilterTaxonomy = []
+    const incomingPrograms = loadProgramInformation().then(function(result)
+        {
+            setPrograms(result);
+        })
+    const incomingFilter = loadTaxonomyInformation().then(function(result)
+    {
+        IncomingFilter.IncomingFilterActivties = result.Activities;
+        IncomingFilter.IncomingFilterTaxonomy = result.Taxonomy;
+    })
+    }, [])
+  //console.log(Object.keys(programs[0]));
+  //console.log(programs[0].Program_Name);
+  return(
+      <View>
+          <ShowPrograms programs={programs} navigation={navigation}/>
+      </View>
+  );
 }
 
 
-function ProgramComponents({ navigation }) {
-    const [programs, setPrograms] = useState<Array<Array<any>>>([]);
+function ProgramComponents() {
 
-    useEffect(() => {
-      IncomingFilter.IncomingFilterActivties = []
-      IncomingFilter.IncomingFilterTaxonomy = []
-      const incomingPrograms = loadProgramInformation().then(function(result)
-          {
-              setPrograms(result);
-          })
-      const incomingFilter = loadTaxonomyInformation().then(function(result)
-      {
-          IncomingFilter.IncomingFilterActivties = result.Activities;
-          IncomingFilter.IncomingFilterTaxonomy = result.Taxonomy;
-      })
-      }, [])
-
-    //console.log(navigation);
-
-    //console.log(Object.keys(programs[0]));
-    //console.log(programs[0].Program_Name);
-    return(
-        <View>
-            <ShowPrograms programs={programs} navigation={navigation}/>
-        </View>
-    );
-  }
-
-
-  // You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
+

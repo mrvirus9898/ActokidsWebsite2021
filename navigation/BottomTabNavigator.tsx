@@ -76,7 +76,7 @@ function ProgramListNavigator() {
     <ProgramListStack.Navigator>
       <ProgramListStack.Screen
         name="ProgramListScreen"
-        component={WrapProgramList}
+        component={ProgramList}
         options={{ 
           headerTitle: 'Program List', 
           headerRight: () => (<FilterButton />)}}
