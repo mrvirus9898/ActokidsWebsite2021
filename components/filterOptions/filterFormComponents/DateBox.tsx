@@ -9,7 +9,7 @@ DATETIMEPICKER FOR WEB VERSION
 */
 
 import * as React from 'react';
-import { Text, Button, View, Dimensions, TouchableHighlight } from 'react-native';
+import { Text, Button, View, TextInput, Dimensions } from 'react-native';
 
 //import DateTimePicker from '@react-native-community/datetimepicker';
 
@@ -17,33 +17,24 @@ import { Card } from 'react-native-elements';
 
 export default function DateBox() {
   const [date, setDate] = React.useState(new Date())
-  const [mode, setMode] = React.useState('date');
-  const [show, setShow] = React.useState(false);
 
   let currentDate = (date.getMonth()+1) + " " + date.getDate() + " " + date.getFullYear()
 
-  //console.log(date)
+  let screenWidth = Dimensions.get("window").width;
+  let cols = 3;
+  let tileSize = screenWidth / cols
 
   function logDate(){
     console.log(currentDate)
   }
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(false);
-    setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  return (null);
+  return (        
+      <TextInput
+        style={{height: 40, borderColor: 'grey', borderWidth: 1, margin: 20, width: tileSize}}
+        onChangeText={text => logDate}
+        value={currentDate}
+      />
+    );
 }
 
 /*

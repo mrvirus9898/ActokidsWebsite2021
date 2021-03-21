@@ -11,7 +11,7 @@ TODO need website complient picker
 import * as React from 'react';
 import { Text, TextInput, View } from 'react-native';
 
-//import {Picker} from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 
 
@@ -19,11 +19,7 @@ export default function PhysicalIntensity() {
 
   const [selectedOption, setSelection] = React.useState([])
 
-  return (null);
-}
-
-/*
-    <View>
+  return (    <View>
     <Picker
       selectedValue={selectedOption}
       onValueChange={(itemValue, itemIndex) =>
@@ -34,5 +30,9 @@ export default function PhysicalIntensity() {
       <Picker.Item label="Self-Paced" value="Self-Paced" />
       <Picker.Item label="Chair-Based" value="Chair-Based" />
     </Picker>
-    </View>
+    </View>);
+}
+
+/*
+
 */
