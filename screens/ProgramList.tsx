@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View} from 'react-native';
+import { View, StyleSheet} from 'react-native';
 
 import ShowPrograms from '../components/ListComponents/ShowPrograms';
 
@@ -35,8 +35,17 @@ export default function ProgramList({navigation}) {
     })
     }, [])
   return(
-      <View>
+      <View style={styles.ProgramListStyle}>
           <ShowPrograms programs={programs} navigation={navigation}/>
       </View>
   );
 }
+
+const styles = StyleSheet.create({
+    ProgramListStyle: {
+      width: '70%',
+      height: '100%',
+      marginLeft: '15%',
+      marginRight: '15%'
+    }
+  });  

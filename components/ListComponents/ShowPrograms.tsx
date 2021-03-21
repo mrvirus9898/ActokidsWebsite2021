@@ -83,11 +83,6 @@ export default function ShowPrograms(params: Array<Array<any>>){
     }else{
       output = params.programs
     }
-    /*var arr = [1, 2, 3, 4];
-    arr.forEach(function (el) {
-      console.log(el);
-    })*/
-    //console.log(output)
     return(output)
   }
 
