@@ -11,75 +11,25 @@ import CheckBoxList from '../components/CheckBoxList';
 
 import FilterRootCards from '../components/filterOptions/FilterRootCards';
 
-export default function FilterPage() {
+import FilterSelector from '../components/filterOptions/FilterSelector';
 
-    //Need to check as the load function is still loading
+export default function FilterPage() {
+    return(
+        <View>
+            <FilterSelector />
+        </View>
+    );
+}
+
+/*
     if(IncomingFilter.IncomingFilterActivties.length == 0){
         return(null);        
     }else{
         //console.log(taxonomy.Activities);
         return(
             <View>
-                <FilterRootCards />
-            </View>
-        );
-    }
-
-/*
-                <ScrollView>
-                    <CheckBoxList title={IncomingFilter.IncomingFilterActivties}/>
-                    <CheckBoxList title={IncomingFilter.IncomingFilterTaxonomy}/>
-                </ScrollView>
-                */
-
-    /*if(taxonomy.length == 0){
-        
-        const incomingData = loadTaxonomyInformation().then(function(result)
-        {
-            setTaxonomy(result);
-        })
-        return(null);        
-    }else{
-        //console.log(taxonomy.Activities);
-        return(
-            <View>
-                <ScrollView>
-                    <CheckBoxList title={taxonomy.Activities}/>
-                    <CheckBoxList title={taxonomy.Taxonomy}/>
-                </ScrollView>
+                <FilterSelector />
             </View>
         );
     }*/
-}
-
-/*
-             <Text>Filter List Top Component</Text>
-<CheckBoxList title={taxonomy.Activities}/>
-
-<View>
-            <ScrollView>
-                <Text style={styles.headTitle}>
-                    Activity Types
-                </Text>
-                {ShowActCheckBox()}
-                <Text style={styles.textLine}>
-                    _________________________________________________________
-                </Text>
-                <Text style={styles.headTitle}>
-                    Disability Types
-                </Text>
-                {ShowDisCheckBox()}
-            </ScrollView>
-        </View>
-
-        */
-       /*
-           const [taxonomy, setTaxonomy] = useState<Array<Array<any>>>([]);
-
-    useEffect(() => {
-        const incomingData = loadTaxonomyInformation().then(function(result)
-        {
-            setTaxonomy(result);
-        })
-    }, [])*/
 
