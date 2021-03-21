@@ -4,12 +4,14 @@ Nick Bennett
 
 Date input box
 
+TODO
+DATETIMEPICKER FOR WEB VERSION
 */
 
 import * as React from 'react';
 import { Text, Button, View, Dimensions, TouchableHighlight } from 'react-native';
 
-import DateTimePicker from '@react-native-community/datetimepicker';
+//import DateTimePicker from '@react-native-community/datetimepicker';
 
 import { Card } from 'react-native-elements';
 
@@ -41,7 +43,10 @@ export default function DateBox() {
     showMode('date');
   };
 
-  return (
+  return (null);
+}
+
+/*
     <View>
       <View>
         <TouchableHighlight 
@@ -64,45 +69,5 @@ export default function DateBox() {
         />
       )}
     </View>
-  );
-}
-
-/*
-      <Text>{showDatePicker()}</Text>
-      <DateTimePicker
-        value={date}
-        mode={'date'}
-        onChange={onChange}
-        display="default"
-      />
-*/
-/*
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    console.log(currentDate)
-    //setDate(currentDate)
-  }
-
-  const showDatePicker = () => {
-    return date.getDate
-  }*/
-
-  /*
-        <TouchableHighlight 
-        accessible = {true}
-        accessibilityLabel = {currentDate}
-        accessibilityHint="Click here to learn more."
-        accessibilityRole="imagebutton" 
-        onPress= {() => {
-            <DateTimePicker
-            value={date}
-            mode={'date'}
-            onChange={logDate}
-            display="default"
-          />
-        }}>
-          <Card>
-            <Text>{currentDate}</Text>
-          </Card>
-      </TouchableHighlight>
+  
   */

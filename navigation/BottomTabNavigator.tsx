@@ -21,6 +21,8 @@ import FilterIndoorPrograms from '../components/filterOptions/FilterIndoorProgra
 import FilterLanguageOptions from '../components/filterOptions/FilterLanguageOptions';
 import FilterOutdoorPrograms from '../components/filterOptions/FilterOutdoorPrograms';
 import FilterTeamSports from '../components/filterOptions/FilterTeamSports';
+import FilterFormB from '../components/filterOptions/FilerFormB';
+import FilterRootCards from '../components/filterOptions/FilterRootCards';
 
 import FilterButton from '../components/FilterButton';
 
@@ -128,6 +130,16 @@ function ProgramListNavigator() {
         name="FilterTeamSports"
         component={FilterTeamSports}
         options={{ headerTitle: 'Team Sports' }}
+      />
+      <ProgramListStack.Screen
+        name="FilterFormB"
+        component={FilterFormB}
+        options={{ headerTitle: 'Filter Form' }}
+      />   
+      <ProgramListStack.Screen
+        name="FilterRootCards"
+        component={FilterRootCards}
+        options={{ headerTitle: 'Select Filter' }}
       />   
     </ProgramListStack.Navigator>
   );

@@ -4,12 +4,15 @@ Nick Bennett
 
 Not sure why, but a refresh flag is eneded to update the form
 
+
+TODO:
+CHECK BOX FOR WEB VERSION
 */
 
 import React, {useState, useEffect} from 'react';
 import {  View, StyleSheet, Text  } from 'react-native';
 
-import  CheckBox  from '@react-native-community/checkbox';
+//import  CheckBox  from '@react-native-community/checkbox';
 
 import { Card } from 'react-native-elements';
 
@@ -36,24 +39,7 @@ export default function AgesAndGrades(){
 
     const [refresh, setRefresh] = useState(false);
 
-    return(       
-        <View style={styles.container}>
-            {
-                checkedOptions.map((item, key) => 
-                    <Card key={key}>
-                        <View key={key} style={styles.checkboxstyle}>
-                            <CheckBox
-                                key={key}
-                                disabled={false}
-                                value={item.checked}
-                                onValueChange={() => changeCheck(item.key)}
-                            />
-                            <Text style={styles.checkboxlabel}>{item.title}</Text>
-                        </View>
-                    </Card>
-                )
-            }
-        </View>  )
+    return(null)
 
     function changeCheck(key: number){
         let tempOptions = checkedOptions
@@ -81,3 +67,22 @@ const styles = StyleSheet.create({
         marginTop: 5
     }
   });
+  /*
+        <View style={styles.container}>
+            {
+                checkedOptions.map((item, key) => 
+                    <Card key={key}>
+                        <View key={key} style={styles.checkboxstyle}>
+                            <CheckBox
+                                key={key}
+                                disabled={false}
+                                value={item.checked}
+                                onValueChange={() => changeCheck(item.key)}
+                            />
+                            <Text style={styles.checkboxlabel}>{item.title}</Text>
+                        </View>
+                    </Card>
+                )
+            }
+        </View> 
+  */
