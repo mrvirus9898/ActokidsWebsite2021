@@ -66,7 +66,7 @@ export default function ShowPrograms(params: Array<Array<any>>){
           )
       }
   }
-
+//params.navigation.navigate('ProgramDetailsScreen', {item: item});
   function applyFilter(filter: Array<String>){
     let output: Array<any> = []
 

@@ -5,14 +5,15 @@ import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
+
 import useColorScheme from '../hooks/useColorScheme';
+
 import ProgramList from '../screens/ProgramList';
 import ProgramDetails from '../screens/ProgramDetails';
 import ActivityList from '../screens/ActivityList';
 import Map from '../screens/Map';
-import { BottomTabParamList, ProgramParamList, ActivityParamList, MapParamList } from '../types';
-
 import FilterPage from '../screens/FilterPage';
+
 import FilterAccessOptions from '../components/filterOptions/FilterAccessOptions';
 import FilterAgesGrades from '../components/filterOptions/FilterAgesGrades';
 import FilterCostsAndTravel from '../components/filterOptions/FilterCostsAndTravel';
@@ -23,8 +24,9 @@ import FilterOutdoorPrograms from '../components/filterOptions/FilterOutdoorProg
 import FilterTeamSports from '../components/filterOptions/FilterTeamSports';
 import FilterFormB from '../components/filterOptions/FilerFormB';
 import FilterRootCards from '../components/filterOptions/FilterRootCards';
-
 import FilterButton from '../components/FilterButton';
+
+import { BottomTabParamList, ProgramParamList, ActivityParamList, MapParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

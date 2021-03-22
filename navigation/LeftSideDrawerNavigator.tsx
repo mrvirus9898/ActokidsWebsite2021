@@ -7,13 +7,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppLogin from '../components/AppLogin';
 import FontSettings from '../components/LeftBarSettings/FontSettings';
 
-import { StyleSheet, Dimensions, TouchableOpacity, View } from 'react-native';
+import { slide as Menu } from '../node_modules/react-burger-menu';
+
+import { StyleSheet, Dimensions, Text, View, Button, Alert } from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
 export default function LeftSideDrawerNavigator() {
-
-  
 
   return (
     <NavigationContainer independent={true}>
@@ -32,6 +32,15 @@ function ProgramComponents() {
   let screenWidth = Dimensions.get("window").width;
     return(
       <View style={styles.body}>
+        <Button title="Hello" onPress={ () => alert("Hello")} />
+        <View style={{backgroundColor: "Black"}}>
+          <Menu>
+            <Text>Hello</Text>
+            <Text>Hello</Text>
+            <Text>Hello</Text>
+          </Menu>
+        </View>
+        <ProgramList navigation={navigator}/>
       </View>
     );
 }

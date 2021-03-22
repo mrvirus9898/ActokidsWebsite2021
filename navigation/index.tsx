@@ -6,6 +6,7 @@ import { ColorSchemeName, View, StyleSheet, Dimensions } from 'react-native';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
+import LeftSideDrawerNavigator from './LeftSideDrawerNavigator'
 import LinkingConfiguration from './LinkingConfiguration';
 
 const dimension = (Dimensions.get('window').width / 10)
