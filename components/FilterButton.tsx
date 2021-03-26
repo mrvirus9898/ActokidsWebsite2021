@@ -12,8 +12,11 @@ Future react releases will probably fix this but until them, have a free shrug Â
 */
 
 import * as React from 'react';
-import { Button } from 'react-native';
+import { Button, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import Colors from '../constants/Colors'
 
 export default function filterButton() {
   const navigation = useNavigation();
@@ -21,8 +24,36 @@ export default function filterButton() {
   return (
     <Button
       title={`Filter`}
-      color="#ff4800"
+      color={Colors.Red.color}
       onPress={() => navigation.navigate('ProgramFilterScreen')}
     />
   );
 }
+const styles = StyleSheet.create({
+  appButtonContainer: {
+    elevation: 8,
+    backgroundColor: Colors.OffWhite.color,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginRight: 10
+  },
+  appButtonText: {
+    fontSize: 20,
+    color: Colors.Red.color,
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  }
+});
+
+/*
+    <TouchableOpacity
+      style={styles.appButtonContainer}
+      onPress={() => navigation.navigate('ProgramFilterScreen')}
+    >
+      <Text style={styles.appButtonText}>Filter</Text>
+    </TouchableOpacity>
+
+  );
+  */

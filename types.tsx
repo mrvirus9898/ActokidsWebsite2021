@@ -29,6 +29,8 @@ export type ProgramParamList = {
   FilterLanguageOptions: undefined;
   FilterOutdoorPrograms: undefined;
   FilterTeamSports: undefined;
+  FilterFormB: undefined;
+  FilterRootCards: undefined;
 };
 
 export type ActivityParamList = {

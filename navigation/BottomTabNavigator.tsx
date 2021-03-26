@@ -81,68 +81,168 @@ function ProgramListNavigator() {
         component={WrapProgramList}
         options={{ 
           headerTitle: 'Program List', 
-          headerRight: () => (<FilterButton />)}}
-      />
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerRight: () => (<FilterButton />),
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          },
+      }}/>
       <ProgramListStack.Screen
         name="ProgramDetailsScreen"
         component={ProgramDetails}
-        options={{ headerTitle: 'Program Details' }}
-      />
+        options={{ 
+          headerTitle: 'Program Details', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>
        <ProgramListStack.Screen
         name="ProgramFilterScreen"
         component={FilterPage}
-        options={{ headerTitle: 'Filter' }}
-      />   
+        options={{ 
+          headerTitle: 'Filter', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>   
       <ProgramListStack.Screen
         name="FilterAccessOptions"
         component={FilterAccessOptions}
-        options={{ headerTitle: 'Accessibility Options' }}
-      />   
+        options={{ 
+          headerTitle: 'Accessibility Options', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          },
+      }}/>   
       <ProgramListStack.Screen
         name="FilterAgesGrades"
         component={FilterAgesGrades}
-        options={{ headerTitle: 'Ages and Grades' }}
-      />   
+        options={{ 
+          headerTitle: 'Ages and Grades', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>   
       <ProgramListStack.Screen
         name="FilterCostsAndTravel"
         component={FilterCostsAndTravel}
-        options={{ headerTitle: 'Costs and Travel' }}
-      />   
+        options={{ 
+          headerTitle: 'Costs and Travel', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          },
+      }}/>   
       <ProgramListStack.Screen
         name="FilterIndividualSports"
         component={FilterIndividualSports}
-        options={{ headerTitle: 'Individual Sports' }}
-      />   
+        options={{ headerTitle: 'Individual Sports', 
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          color: Colors.OffWhite.color
+        },
+        headerStyle: {
+          backgroundColor: Colors.Red.color
+        },
+      }}/>   
       <ProgramListStack.Screen
         name="FilterIndoorPrograms"
         component={FilterIndoorPrograms}
-        options={{ headerTitle: 'Indoor Programs' }}
-      />   
+        options={{ headerTitle: 'Indoor Programs', 
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          color: Colors.OffWhite.color
+        },
+        headerStyle: {
+          backgroundColor: Colors.Red.color
+        }, 
+      }}/>   
       <ProgramListStack.Screen
         name="FilterLanguageOptions"
         component={FilterLanguageOptions}
-        options={{ headerTitle: 'Language Options' }}
-      />   
+        options={{ 
+          headerTitle: 'Language Options', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>   
       <ProgramListStack.Screen
         name="FilterOutdoorPrograms"
         component={FilterOutdoorPrograms}
-        options={{ headerTitle: 'Outdoors Programs' }}
-      />   
+        options={{ 
+          headerTitle: 'Outdoors Programs', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          },
+      }}/>   
       <ProgramListStack.Screen
         name="FilterTeamSports"
         component={FilterTeamSports}
-        options={{ headerTitle: 'Team Sports' }}
-      />
+        options={{ headerTitle: 'Team Sports', 
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          color: Colors.OffWhite.color
+        },
+        headerStyle: {
+          backgroundColor: Colors.Red.color
+        }, 
+      }}/>
       <ProgramListStack.Screen
         name="FilterFormB"
         component={FilterFormB}
-        options={{ headerTitle: 'Filter Form' }}
-      />   
+        options={{ 
+          headerTitle: 'Filter Form', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          },
+      }}/>   
       <ProgramListStack.Screen
         name="FilterRootCards"
         component={FilterRootCards}
-        options={{ headerTitle: 'Select Filter' }}
-      />   
+        options={{ 
+          headerTitle: 'Select Filter', 
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          },
+      }}/>   
     </ProgramListStack.Navigator>
   );
 }
