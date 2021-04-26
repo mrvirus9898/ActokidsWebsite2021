@@ -11,6 +11,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import ProgramList from '../screens/ProgramList';
 import ProgramDetails from '../screens/ProgramDetails';
 import ActivityList from '../screens/ActivityList';
+import ActivityDetails from '../screens/ActivityDetails';
 import Map from '../screens/Map';
 import FilterPage from '../screens/FilterPage';
 
@@ -28,37 +29,50 @@ import FilterButton from '../components/FilterButton';
 
 import { BottomTabParamList, ProgramParamList, ActivityParamList, MapParamList } from '../types';
 
+
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+
+let searchTerm = "";
+let incomingData= "";
 
 export default function BottomTabNavigator(props: any) {
   const colorScheme = useColorScheme();
 
+  searchTerm = props.searchTerm
+  incomingData = props.incomingData
+  //console.log("Incoming Data " + incomingData)
+
   return (
       <BottomTab.Navigator
         initialRouteName="Programs"
-        tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-        <BottomTab.Screen
-          name="Programs"
-          component={ProgramListNavigator}
-          options={{
-            tabBarIcon: ({ color }) => <TabBarIcon name="md-rocket" color={color} />,
-          }}
-        />
-        <BottomTab.Screen
-          name="Activities"
-          component={ActivityListNavigator}
-          options={{
-            tabBarIcon: ({ color }) => <TabBarIcon name="md-american-football" color={color} />,
-          }}
-        />
-        <BottomTab.Screen
-          name="Map"
-          component={MapNavigator}
-          options={{
-            tabBarIcon: ({ color }) => <TabBarIcon name="md-map" color={color} />,
-          }}
-        />
-      </BottomTab.Navigator>
+        tabBarOptions={{ 
+          activeTintColor: Colors[colorScheme].tint,
+          activeBackgroundColor: Colors.Red.color,
+          inactiveBackgroundColor: Colors.Red.color,
+          labelStyle: {color: Colors.OffWhite.color} 
+      }}>
+      <BottomTab.Screen
+        name="Programs"
+        component={ProgramListNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-rocket" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Activities"
+        component={ActivityListNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-american-football" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Map"
+        component={MapNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="md-map" color={color} />,
+        }}
+      />
+    </BottomTab.Navigator>
   );
 }
 
@@ -78,7 +92,7 @@ function ProgramListNavigator() {
     <ProgramListStack.Navigator>
       <ProgramListStack.Screen
         name="ProgramListScreen"
-        component={WrapProgramList}
+        component={ProgramComponents}
         options={{ 
           headerTitle: 'Program List', 
           headerTitleStyle: {
@@ -255,6 +269,16 @@ function WrapProgramList({navigation}){
   );
 }
 
+function ProgramComponents({ navigation }) {
+  //console.log(incomingData)
+  return(
+      <ProgramList 
+        searchTerm={searchTerm} 
+        navigation={navigation} 
+        programs={incomingData[0]}/>
+  );
+}
+
 const ActivityListStack = createStackNavigator<ActivityParamList>();
 
 function ActivityListNavigator() {
@@ -262,11 +286,47 @@ function ActivityListNavigator() {
     <ActivityListStack.Navigator>
       <ActivityListStack.Screen
         name="ActivityListScreen"
-        component={ActivityList}
+        component={ActivityListComponent}
         options={{ headerTitle: 'Activity List' }}
       />
+      <ActivityListStack.Screen
+        name="ActivityDetailsScreen"
+        component={ActivityDetails}
+        options={{ 
+          headerShown: false,
+          headerTitle: 'Activity Details',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>
+      <ActivityListStack.Screen
+        name="ActivityProgramDetailsScreen"
+        component={ProgramDetails}
+        options={{ 
+          headerShown: false,
+          headerTitle: 'Activity Details',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>
     </ActivityListStack.Navigator>
   );
+}
+
+function ActivityListComponent({navigation}){
+  return(<ActivityList
+        navigation={navigation} 
+        searchTerm={searchTerm}
+        activities={incomingData[1][0]}
+        programs={incomingData[0]}/>)
 }
 
 const MapStack = createStackNavigator<MapParamList>();

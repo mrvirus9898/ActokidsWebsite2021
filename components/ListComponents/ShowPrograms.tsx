@@ -13,82 +13,84 @@ import { useIsFocused } from '@react-navigation/native'
 import {
   TouchableHighlight,
   View,
-  FlatList
+  FlatList,
+  StyleSheet
 } from 'react-native';
 
 import ProgramCards from './ProgramCards';
 
+import Colors from '../../constants/Colors';
+
 import FilterCriteria from '../../types';
 
-export default function ShowPrograms(params: Array<Array<any>>){
-
+export default function ShowPrograms(props: any){
+  //console.log(Object.keys(props.programs))
   //const [filter, setFilter] = useState<Array<any>>([]);
   const [filter, setFilter] = useState<Array<String>>([]);
 
-  const isFocused = useIsFocused()
-
-    useEffect(() => {
-      console.log("Current Filter: " + FilterCriteria.Criteria)
-    } , [isFocused])
-
-
   function drawCards(){
-        //console.log("Filter: " + filter)
-        if(params === undefined)
-        {
-          console.log("Still Loading")
-          return(null)
-        }else{
-          //console.log("Showing Programs: " + Object.keys(params.navigation))
-          
-          let filteredData = applyFilter(FilterCriteria.Criteria)
-          return( 
-            <View>
-              <FlatList
-                data={filteredData}
-                keyExtractor={(x, i) => i.toString()}
-                renderItem={({ item }) => (
-                  <View >
-                    <TouchableHighlight 
-                      accessible = {true}
-                      accessibilityLabel = {item.Program_Name}
-                      accessibilityHint="Click here to learn more."
-                      accessibilityRole="imagebutton" 
-                      onPress= {() => {
-                        params.navigation.navigate('ProgramDetailsScreen', {item: item});
-                      }}>
-                      <ProgramCards item={item} />
-                    </TouchableHighlight>
-                  </View>
-                )}
-              />
+    let filteredData = applyFilter()
+    return( 
+      <View>
+        <FlatList
+          data={filteredData}
+          keyExtractor={(x, i) => i.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.programListStyle}>
+              <TouchableHighlight 
+                accessible = {true}
+                accessibilityLabel = {item.Program_Name}
+                accessibilityHint="Click here to learn more."
+                accessibilityRole="imagebutton" 
+                onPress= {() => {
+                  props.navigation.navigate('ProgramDetailsScreen', {item: item});
+                }}>
+                <ProgramCards item={item} />
+              </TouchableHighlight>
             </View>
-          )
-      }
+          )}
+        />
+      </View>
+    )
   }
 //params.navigation.navigate('ProgramDetailsScreen', {item: item});
-  function applyFilter(filter: Array<String>){
-    let output: Array<any> = []
+function applyFilter(){
+  let output: Array<any> = []
 
-    //console.log("Current Filter: " + filter)
-
-    if(filter.length != 0){
-      params.programs.forEach(element => {
-        if(element.accessability.localeCompare(filter[0]) == 0){
-          //console.log(filter[0])
-          output.push(element)
-        }
-        //console.log(output)
-      });
-    }else{
-      output = params.programs
-    }
+  //console.log("Current Filter: " + props.searchTerm)
+  if((props.searchTerm != "") && (props.searchTerm != undefined)){
+    props.programs.forEach(program => {
+      if(props.searchTerm === program.Program_Name){
+        console.log("Target Found")
+        output.push(program)
+      }
+    });
+    //console.log("If True")
     return(output)
+  }else{
+    //console.log("If False")
+    return props.programs
   }
+}
 
   return (drawCards())
 
 }
+
+const styles = StyleSheet.create({
+  programListStyle:{
+      borderRadius: 6,
+      elevation: 3,
+      backgroundColor: Colors.OffWhite.color,
+      shadowColor: '#333',
+      shadowOffset: {width: 1, height: 1},
+      shadowOpacity: 0.3,
+      shadowRadius: 2,
+      marginHorizontal:12,
+      marginVertical:4,
+  }
+});
+
 
 //style={{ marginBotton: 30 }}
 
@@ -109,4 +111,22 @@ function rightFilterDrawer(){
     )
   }
 
+*/
+
+/*
+    let output: Array<any> = []
+
+    //console.log("Current Filter: " + filter)
+
+    if(filter.length != 0){
+      params.programs.forEach(element => {
+        if(element.accessability.localeCompare(filter[0]) == 0){
+          //console.log(filter[0])
+          output.push(element)
+        }
+        //console.log(output)
+      });
+    }else{
+      output = params.programs
+    }
 */

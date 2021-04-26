@@ -28,11 +28,11 @@ export default function Navigation(props: any) {
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator(props: any) {
-  console.log(props.incomingData)
+  //console.log(props.incomingData)
   return (
     <View style={styles.body}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Root" component={BottomTabNavigator} />
+        <Stack.Screen name="Root" component={returnBottomTabNavigator} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       </Stack.Navigator>
     </View>
