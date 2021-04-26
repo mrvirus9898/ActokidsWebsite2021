@@ -14,7 +14,8 @@ import {
   TouchableOpacity,
   View,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from 'react-native';
 
 import ProgramCards from './ProgramCards';
@@ -28,7 +29,7 @@ export default function ShowPrograms(props: any){
   function drawCards(){
     let filteredData = applyFilter()
     return( 
-      <View>
+      <View style={styles.container}>
         <FlatList
           data={filteredData}
           keyExtractor={(x, i) => i.toString()}
@@ -85,7 +86,13 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       marginHorizontal:12,
       marginVertical:4,
-  }
+  },
+  container: {
+    padding: 10,
+    backgroundColor: 'white',
+    flex: 1,
+    flexDirection: 'column'
+  },
 });
 
 
@@ -126,4 +133,27 @@ function rightFilterDrawer(){
     }else{
       output = params.programs
     }
+*/
+
+/*
+        <ScrollView>
+        {
+          filteredData.map((data, index) =>
+          <View style={styles.programListStyle}>
+            <TouchableOpacity 
+              key={index}
+              accessible = {true}
+              accessibilityLabel = {data.Program_Name}
+              accessibilityHint="Click here to learn more."
+              accessibilityRole="imagebutton" 
+              onPress= {() => {
+                props.navigation.navigate('ActivityProgramDetailsScreen', {item: data});
+              }}>
+              <View>
+                <ProgramCards item={data} />
+              </View>
+            </TouchableOpacity>
+          </View> )
+        }
+        </ScrollView>
 */

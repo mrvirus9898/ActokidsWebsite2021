@@ -24,7 +24,7 @@ export default function ShowActivities(props: any){
     function drawCards(){
       let filteredData = applySearch()       
       return( 
-        <View>
+        <View style={styles.container}>
           <FlatList
             data={filteredData}
             keyExtractor={(x, i) => i.toString()}
@@ -80,7 +80,13 @@ export default function ShowActivities(props: any){
         shadowRadius: 2,
         marginHorizontal:4,
         marginVertical:6,
-    }
+    },
+    container: {
+      padding: 10,
+      backgroundColor: 'white',
+      flex: 1,
+      flexDirection: 'column'
+    },
 });
 
 
