@@ -30,7 +30,7 @@ import { BottomTabParamList, ProgramParamList, ActivityParamList, MapParamList }
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator() {
+export default function BottomTabNavigator(props: any) {
   const colorScheme = useColorScheme();
 
   return (

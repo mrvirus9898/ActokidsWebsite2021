@@ -5,33 +5,70 @@ import * as React from 'react';
 
 import FilterCriteria from '../types'
 
+import loadProgramInformation from '../hooks/loadProgramInformation';
+import loadTaxonomyInformation from '../hooks/loadTaxonomyInformation';
+
 export default function useCachedResources() {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+  const [isProgramLoadingComplete, setProgramLoadingComplete] = React.useState([[]]);
+  const [isMapProcessingComplete, setMapProcessingComplete] = React.useState([[]]);
+  const [isTaxonomyLoadingComplete, setTaxonomyLoadingComplete] = React.useState([[]]);
+
+  FilterCriteria.Criteria = []
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
-    FilterCriteria.Criteria = []
-    async function loadResourcesAndDataAsync() {
-      try {
-        SplashScreen.preventAutoHideAsync();
 
-        // Load fonts
-        await Font.loadAsync({
-          ...Ionicons.font,
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
-        });
-        
-      } catch (e) {
-        // We might want to provide this error information to an error reporting service
-        console.warn(e);
-      } finally {
-        setLoadingComplete(true);
-        SplashScreen.hideAsync();
-      }
-    }
+    const incomingPrograms = loadProgramInformation().then(function(result)
+    {
+        let program = result;
+        program.sort((a, b) => (a.Program_Id > b.Program_Id) ? 1 : -1)
+        setProgramLoadingComplete(program);
+        let tempLocations: any = [];
+        let count = 0;
+        program.forEach(program => {
+          //console.log(element)
+          let tempCoord: Coordinates = {
+            //turns out you can convert string to number by using the plus sign
+            //One Free ¯\_(ツ)_/¯
+            latitude: +program.lat,
+            longitude: +program.long,
+          }
+          let tempProLocation: ProgramLocation = {
+            title: program.Program_Name,
+            key: count,
+            coordinates: tempCoord,
+            description: program.Program_Types,
+            program_id: program.Program_Id
+          }
+          //searchProgramActivities(program.Program_name)
+          tempLocations.push(tempProLocation)
+          count++
+        })
+        setMapProcessingComplete(tempLocations)
+    }) 
 
-    loadResourcesAndDataAsync();
+    const incomingFilter = loadTaxonomyInformation().then(function(result)
+    {
+        let incomingData: any = []
+        let activities = result.Activities;
+        let taxonomy = result.Taxonomy;
+        incomingData.push(activities)
+        incomingData.push(taxonomy)     
+        //console.log(incomingData)
+
+        setTaxonomyLoadingComplete(incomingData);
+    })
+
+
   }, []);
 
-  return isLoadingComplete;
+  if(isProgramLoadingComplete && isTaxonomyLoadingComplete && isMapProcessingComplete){
+    //console.log(isProgramLoadingComplete)
+    //console.log(isTaxonomyLoadingComplete)
+    return [isProgramLoadingComplete, isTaxonomyLoadingComplete, isMapProcessingComplete]
+  }else{
+    
+  return false
+  }
+  
 }

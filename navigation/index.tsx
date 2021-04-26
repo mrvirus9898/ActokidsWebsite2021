@@ -13,12 +13,12 @@ const dimension = (Dimensions.get('window').width / 10)
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation(props: any) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
+      theme={props.colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <RootNavigator incomingData={props.incomingData}/>
     </NavigationContainer>
   );
 }
@@ -27,7 +27,8 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 // Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
+function RootNavigator(props: any) {
+  console.log(props.incomingData)
   return (
     <View style={styles.body}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -36,7 +37,14 @@ function RootNavigator() {
       </Stack.Navigator>
     </View>
   );
+
+  function returnBottomTabNavigator(){
+    return (<BottomTabNavigator 
+      incomingData = {props.incomingData}/>)
+  }
 }
+
+
 
 
 const styles = StyleSheet.create({
