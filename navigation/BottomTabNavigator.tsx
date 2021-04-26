@@ -287,13 +287,20 @@ function ActivityListNavigator() {
       <ActivityListStack.Screen
         name="ActivityListScreen"
         component={ActivityListComponent}
-        options={{ headerTitle: 'Activity List' }}
-      />
+        options={{ 
+          headerTitle: 'Activity List',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+          },
+          headerStyle: {
+            backgroundColor: Colors.Red.color
+          }, 
+      }}/>
       <ActivityListStack.Screen
         name="ActivityDetailsScreen"
         component={ActivityDetails}
         options={{ 
-          headerShown: false,
           headerTitle: 'Activity Details',
           headerTitleStyle: {
             fontWeight: 'bold',
@@ -307,7 +314,6 @@ function ActivityListNavigator() {
         name="ActivityProgramDetailsScreen"
         component={ProgramDetails}
         options={{ 
-          headerShown: false,
           headerTitle: 'Activity Details',
           headerTitleStyle: {
             fontWeight: 'bold',

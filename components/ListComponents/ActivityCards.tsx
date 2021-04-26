@@ -5,98 +5,72 @@ import { StyleSheet, Text,TouchableOpacity,
 
 export default function ActivityCards(item: any) {
     //console.log(item.item)
+    let picture_url: string = (item.item.pic_url === undefined) ? 
+        "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*" : item.item.pic_url;
+
+    function pluralCorrection(program_number: number){
+        if(program_number == 1){
+            return(
+                <Text style={styles.activityCardSubText}>
+                    {program_number} program
+                </Text>
+            )
+        }else{
+            return(
+                <Text style={styles.activityCardSubText}>
+                    {program_number} programs
+                </Text>
+            )
+        }
+    }
+
     return(
-        <Card>
-            <Text style={styles.titleText}>
-                    {item.item.value}
-            </Text>
-        </Card>
+        <View style={styles.activityCardStyle}>
+            <View>
+                <Image 
+                    style={styles.activityImageStyle}
+                    source={{uri: picture_url}}/> 
+            </View>
+            <View>
+                <Text style={styles.activityCardText}>
+                        {item.item.activity}
+                </Text>
+                {pluralCorrection(item.item.programKeys.length)}
+            </View>
+            <View>
+            {//SPLITER VIEW FOR THE MEMES
+            }
+            </View>
+        </View>
+
     )
+
 }
 
-/*
-<Text style={{ fontSize: 16, color: 'black', margin: 5 }}>
-    {moment(item.item.Sched_Text).format('dddd') + ', ' + moment(item.item.Sched_Text).format('MMMM Do YYYY, h:mm a')}
-</Text>
-
-<Text style={{ fontSize: 16, color: 'black' }}>
-    {item.item.Program_Name}
-</Text>
-
-<Text style={{ fontSize: 16, color: 'black' }}>
-    {item.item.Program_Address}
-</Text>
-*/
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-
-    toolbar: {
-        backgroundColor: '#FF4500',
-        paddingTop: 8,
-        paddingBottom: 8,
-        flexDirection: 'row'
-    },
-    toolbarTitle: {
-        color: '#fff',
-        width: 150,
-        fontSize: 25,
-        textAlign: 'center',
-        //flex: 1,
-    },
-    toolbarFilter: {
-        width: 50,
-        position: 'absolute',
-        bottom: 10,
-        right: 50,
-    },
-    toolbarLocation: {
-        width: 50,
-        position: 'absolute',
-        bottom: 10,
-        right: 0,
-
-    },
-    button: {
-        alignItems: 'center',
-        backgroundColor: '#ddd',
-        padding: 20
-    },
     titleText: {
         fontFamily: 'serif',
         fontSize: 24,
-        color: 'black',
+        color: 'black'
     },
-    headerText: {
-        fontSize: 27,
-        fontFamily: 'serif',
-        color: 'black',
-    },
-    itemText: {
-        color: 'blue',
-        fontFamily: 'serif',
-        fontSize: 22,
-        textAlign: 'center',
-    },
-    backButton: {
+    activityCardStyle:{
+        marginHorizontal:18,
+        marginVertical:10,
         flex: 1,
-        width: 75,
-        fontFamily: 'serif',
-        fontSize: 20,
-        color: 'white'
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
-    inputText: {
-        fontFamily: 'serif',
-        fontSize: 22,
-        color: 'black',
+    activityImageStyle:{
+        width: 75,
+        height: 75
+    },
+    activityCardText: {
+        fontSize: 26,
         textAlign: 'center',
     },
-    headerView: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: "center",
-    },
-
+    activityCardSubText: {
+        fontSize: 16,
+        textAlign: 'center',
+    }
 });

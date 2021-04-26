@@ -11,7 +11,7 @@ import React, { useState, useEffect } from 'react';
 import { useIsFocused } from '@react-navigation/native'
 
 import {
-  TouchableHighlight,
+  TouchableOpacity,
   View,
   FlatList,
   StyleSheet
@@ -21,12 +21,9 @@ import ProgramCards from './ProgramCards';
 
 import Colors from '../../constants/Colors';
 
-import FilterCriteria from '../../types';
-
 export default function ShowPrograms(props: any){
   //console.log(Object.keys(props.programs))
   //const [filter, setFilter] = useState<Array<any>>([]);
-  const [filter, setFilter] = useState<Array<String>>([]);
 
   function drawCards(){
     let filteredData = applyFilter()
@@ -37,7 +34,7 @@ export default function ShowPrograms(props: any){
           keyExtractor={(x, i) => i.toString()}
           renderItem={({ item }) => (
             <View style={styles.programListStyle}>
-              <TouchableHighlight 
+              <TouchableOpacity 
                 accessible = {true}
                 accessibilityLabel = {item.Program_Name}
                 accessibilityHint="Click here to learn more."
@@ -46,7 +43,7 @@ export default function ShowPrograms(props: any){
                   props.navigation.navigate('ProgramDetailsScreen', {item: item});
                 }}>
                 <ProgramCards item={item} />
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           )}
         />

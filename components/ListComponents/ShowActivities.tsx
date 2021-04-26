@@ -5,14 +5,14 @@ import {
   TouchableOpacity,
   View,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from 'react-native';
 
 
 import Colors from '../../constants/Colors';
 
 import ActivityCards from './ActivityCards';
-import IncomingFilter from '../../types'
 
 
 export default function ShowActivities(props: any){
