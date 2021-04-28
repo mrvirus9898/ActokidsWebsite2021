@@ -27,28 +27,29 @@ export default function ShowPrograms(props: any){
   //const [filter, setFilter] = useState<Array<any>>([]);
 
   function drawCards(){
+    console.log("Incoming Data " + Object.keys(props))
     let filteredData = applyFilter()
     return( 
       <View style={styles.container}>
-        <FlatList
-          data={filteredData}
-          keyExtractor={(x, i) => i.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.programListStyle}>
-              <TouchableOpacity 
-                accessible = {true}
-                accessibilityLabel = {item.Program_Name}
-                accessibilityHint="Click here to learn more."
-                accessibilityRole="imagebutton" 
-                onPress= {() => {
-                  props.navigation.navigate('ProgramDetailsScreen', {item: item});
-                }}>
-                <ProgramCards item={item} />
-              </TouchableOpacity>
-            </View>
-          )}
-        />
-      </View>
+      <FlatList
+        data={props.programs}
+        keyExtractor={(x, i) => i.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.programListStyle}>
+            <TouchableOpacity 
+              accessible = {true}
+              accessibilityLabel = {item.Program_Name}
+              accessibilityHint="Click here to learn more."
+              accessibilityRole="imagebutton" 
+              onPress= {() => {
+                props.navigation.navigate('ProgramDetailsScreen', {item: item});
+              }}>
+              <ProgramCards item={item} />
+            </TouchableOpacity>
+          </View>
+        )}
+      />
+    </View>
     )
   }
 //params.navigation.navigate('ProgramDetailsScreen', {item: item});

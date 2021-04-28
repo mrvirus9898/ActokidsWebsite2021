@@ -7,54 +7,63 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppLogin from '../components/AppLogin';
 import FontSettings from '../components/LeftBarSettings/FontSettings';
 
-import { slide as Menu } from '../node_modules/react-burger-menu';
+import BottomTabNavigation from './BottomTabNavigator';
 
 import { StyleSheet, Dimensions, Text, View, Button, Alert } from 'react-native';
 
+import Colors from '../constants/Colors';
+
+import FilterButton from '../components/FilterButton';
+import SearchBarComponent from '../components/SearchBar';
+
 const Drawer = createDrawerNavigator();
 
-export default function LeftSideDrawerNavigator() {
+export default function LeftSideDrawerNavigator(props: any) {
+  const [searchTerm, SetSearchTerm] = React.useState("")
 
   return (
     <NavigationContainer independent={true}>
       <Drawer.Navigator 
       initialRouteName="Programs"
-      drawerPosition={"left"}>
-        <Drawer.Screen name="Programs" component={ProgramComponents} />
-        <Drawer.Screen name="Sign In" component={LoginSignupComponents} />
-        <Drawer.Screen name="Font Size" component={FontComponents} />
+      drawerPosition={"left"}
+      drawerStyle={{
+        backgroundColor: Colors.OffWhite.Transparent
+        
+      }}>
+        <Drawer.Screen 
+          name="Programs" 
+          component={ProgramComponents}
+          options={{
+            headerShown: true,
+            drawerLabel: "Home Screen",
+            headerTitle: props => HeaderSearchBar(),
+            headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.OffWhite.color
+            },
+            headerRight: () => (<FilterButton />),
+            headerStyle: {
+              backgroundColor: Colors.Red.color
+            },
+          }}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
-}
 
-function ProgramComponents() {
-  let screenWidth = Dimensions.get("window").width;
+
+  function ProgramComponents() {
     return(
-      <View style={styles.body}>
-        <Button title="Hello" onPress={ () => alert("Hello")} />
-        <View style={{backgroundColor: "Black"}}>
-          <Menu>
-            <Text>Hello</Text>
-            <Text>Hello</Text>
-            <Text>Hello</Text>
-          </Menu>
-        </View>
-        <ProgramList navigation={navigator}/>
-      </View>
+      <BottomTabNavigation 
+        searchTerm={searchTerm}
+        incomingData={props.incomingData}/>
     );
-}
+  }
 
-function LoginSignupComponents() {
-  return (
-    <AppLogin />
-  );
-}
-
-function FontComponents(){
-    return(
-        <FontSettings />
-    )
+  function HeaderSearchBar(){
+    return(<SearchBarComponent 
+            searchTerm={searchTerm} 
+            setTerm={SetSearchTerm}/>);
+  }
 }
 
 const styles = StyleSheet.create({

@@ -40,7 +40,7 @@ export default function BottomTabNavigator(props: any) {
 
   searchTerm = props.searchTerm
   incomingData = props.incomingData
-  //console.log("Incoming Data " + incomingData)
+  //console.log("Incoming Data " + Object.keys(incomingData))
 
   return (
       <BottomTab.Navigator
@@ -95,6 +95,7 @@ function ProgramListNavigator() {
         component={ProgramComponents}
         options={{ 
           headerTitle: 'Program List', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -109,6 +110,7 @@ function ProgramListNavigator() {
         component={ProgramDetails}
         options={{ 
           headerTitle: 'Program Details', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -122,6 +124,7 @@ function ProgramListNavigator() {
         component={FilterPage}
         options={{ 
           headerTitle: 'Filter', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -135,6 +138,7 @@ function ProgramListNavigator() {
         component={FilterAccessOptions}
         options={{ 
           headerTitle: 'Accessibility Options', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -148,6 +152,7 @@ function ProgramListNavigator() {
         component={FilterAgesGrades}
         options={{ 
           headerTitle: 'Ages and Grades', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -161,6 +166,7 @@ function ProgramListNavigator() {
         component={FilterCostsAndTravel}
         options={{ 
           headerTitle: 'Costs and Travel', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -173,6 +179,7 @@ function ProgramListNavigator() {
         name="FilterIndividualSports"
         component={FilterIndividualSports}
         options={{ headerTitle: 'Individual Sports', 
+        headerShown: true,
         headerTitleStyle: {
           fontWeight: 'bold',
           color: Colors.OffWhite.color
@@ -185,6 +192,7 @@ function ProgramListNavigator() {
         name="FilterIndoorPrograms"
         component={FilterIndoorPrograms}
         options={{ headerTitle: 'Indoor Programs', 
+        headerShown: true,
         headerTitleStyle: {
           fontWeight: 'bold',
           color: Colors.OffWhite.color
@@ -198,6 +206,7 @@ function ProgramListNavigator() {
         component={FilterLanguageOptions}
         options={{ 
           headerTitle: 'Language Options', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -211,6 +220,7 @@ function ProgramListNavigator() {
         component={FilterOutdoorPrograms}
         options={{ 
           headerTitle: 'Outdoors Programs', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -223,6 +233,7 @@ function ProgramListNavigator() {
         name="FilterTeamSports"
         component={FilterTeamSports}
         options={{ headerTitle: 'Team Sports', 
+        headerShown: true,
         headerTitleStyle: {
           fontWeight: 'bold',
           color: Colors.OffWhite.color
@@ -236,6 +247,7 @@ function ProgramListNavigator() {
         component={FilterFormB}
         options={{ 
           headerTitle: 'Filter Form', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -249,6 +261,7 @@ function ProgramListNavigator() {
         component={FilterRootCards}
         options={{ 
           headerTitle: 'Select Filter', 
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -270,7 +283,7 @@ function WrapProgramList({navigation}){
 }
 
 function ProgramComponents({ navigation }) {
-  //console.log(incomingData)
+  //console.log("Incoming Data " + Object.keys(incomingData))
   return(
       <ProgramList 
         searchTerm={searchTerm} 
@@ -289,6 +302,7 @@ function ActivityListNavigator() {
         component={ActivityListComponent}
         options={{ 
           headerTitle: 'Activity List',
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -302,6 +316,7 @@ function ActivityListNavigator() {
         component={ActivityDetails}
         options={{ 
           headerTitle: 'Activity Details',
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color
@@ -315,6 +330,7 @@ function ActivityListNavigator() {
         component={ProgramDetails}
         options={{ 
           headerTitle: 'Activity Details',
+          headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',
             color: Colors.OffWhite.color

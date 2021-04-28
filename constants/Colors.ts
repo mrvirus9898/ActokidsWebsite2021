@@ -20,8 +20,10 @@ export default {
   },
   OffWhite:{
     color: OffWhite,
+    Transparent: 'rgba(248, 248, 255, 0.98)'
   },
   Red:{
     color: Red,
+    Transparent: 'rgba(230, 15, 15, 0.98)'
   },
 };

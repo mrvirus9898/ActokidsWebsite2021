@@ -4,7 +4,7 @@ import { View, StyleSheet} from 'react-native';
 import ShowPrograms from '../components/ListComponents/ShowPrograms';
 
 export default function ProgramList(props: any) {
-
+  //console.log("Incoming Data " + Object.keys(props))
   return(
       <View style={styles.ProgramListStyle}>
           <ShowPrograms programs={props.programs} navigation={props.navigation}/>

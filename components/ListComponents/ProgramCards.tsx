@@ -5,7 +5,7 @@ import { StyleSheet, Text, useWindowDimensions,
 import Colors from '../../constants/Colors';
 
 export default function ProgramCards(props: any) {
-    //console.log(item.item)
+    console.log(props.item)
     let imageWidth = (useWindowDimensions().width) * 0.50; 
     let imageHeight = (useWindowDimensions().height) * 0.25; 
     return(

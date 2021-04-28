@@ -9,8 +9,6 @@ import BottomTabNavigator from './BottomTabNavigator';
 import LeftSideDrawerNavigator from './LeftSideDrawerNavigator'
 import LinkingConfiguration from './LinkingConfiguration';
 
-const dimension = (Dimensions.get('window').width / 10)
-
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation(props: any) {
@@ -40,6 +38,11 @@ function RootNavigator(props: any) {
 
   function returnBottomTabNavigator(){
     return (<BottomTabNavigator 
+      incomingData = {props.incomingData}/>)
+  }
+
+  function returnLeftSideDrawerNavigator(){
+    return (<LeftSideDrawerNavigator 
       incomingData = {props.incomingData}/>)
   }
 }
