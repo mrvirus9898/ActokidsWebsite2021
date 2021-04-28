@@ -27,19 +27,25 @@ import FilterFormB from '../components/filterOptions/FilerFormB';
 import FilterRootCards from '../components/filterOptions/FilterRootCards';
 import FilterButton from '../components/FilterButton';
 
+import SearchBarComponent from '../components/SearchBar';
+
 import { BottomTabParamList, ProgramParamList, ActivityParamList, MapParamList } from '../types';
 
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-let searchTerm = "";
 let incomingData= "";
+let searchTerm = "";
+let SetSearchTerm = ""
 
 export default function BottomTabNavigator(props: any) {
   const colorScheme = useColorScheme();
 
-  searchTerm = props.searchTerm
+
   incomingData = props.incomingData
+  searchTerm = props.incomingData[3]
+  SetSearchTerm = props.incomingData[4]
+
   //console.log("Incoming Data " + Object.keys(incomingData))
 
   return (
@@ -82,6 +88,12 @@ function TabBarIcon(props: { name: string; color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
+function HeaderSearchBar(){
+  return(<SearchBarComponent 
+          searchTerm={searchTerm} 
+          setTerm={SetSearchTerm}/>);
+}
+
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 
@@ -94,7 +106,7 @@ function ProgramListNavigator() {
         name="ProgramListScreen"
         component={ProgramComponents}
         options={{ 
-          headerTitle: 'Program List', 
+          headerTitle: props => HeaderSearchBar(),
           headerShown: true,
           headerTitleStyle: {
             fontWeight: 'bold',

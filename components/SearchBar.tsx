@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function SearchBarComponent(props: any) {
-    const [tempString, SetTemp] = React.useState("")
+    const [tempString, SetTemp] = React.useState(props.searchTerm)
     const [iconSelection, setIcon] = React.useState(true)
+    //console.log("TempString: " + tempString)
 
     function updateSearchTerm(input: string){
         //console.log("TempString: " + input)
@@ -15,8 +15,9 @@ export default function SearchBarComponent(props: any) {
     }
 
     function whenUpdated(){   
-        setIcon(true)
+        //console.log("TempString on update: " + tempString)
         props.setTerm(tempString)
+        setIcon(true)
     }
 
     function clearSearch(){

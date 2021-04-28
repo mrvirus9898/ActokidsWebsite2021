@@ -13,7 +13,7 @@ export default function useCachedResources() {
   const [isMapProcessingComplete, setMapProcessingComplete] = React.useState([[]]);
   const [isTaxonomyLoadingComplete, setTaxonomyLoadingComplete] = React.useState([[]]);
 
-  FilterCriteria.Criteria = []
+  const [searchTerm, SetSearchTerm] = React.useState("")
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
@@ -65,7 +65,7 @@ export default function useCachedResources() {
   if(isProgramLoadingComplete && isTaxonomyLoadingComplete && isMapProcessingComplete){
     //console.log(isProgramLoadingComplete)
     //console.log(isTaxonomyLoadingComplete)
-    return [isProgramLoadingComplete, isTaxonomyLoadingComplete, isMapProcessingComplete]
+    return [isProgramLoadingComplete, isTaxonomyLoadingComplete, isMapProcessingComplete, searchTerm, SetSearchTerm]
   }else{
     
   return false
